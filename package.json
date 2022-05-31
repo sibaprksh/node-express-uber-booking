@@ -2,7 +2,8 @@
   "name": "node-starter",
   "version": "0.0.0",
   "scripts": {
-    "start": "nodemon app.js"
+    "start-dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
