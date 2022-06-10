@@ -1,6 +1,6 @@
 'use strict';
 
-const { User } = require('./user.model');
+import { User } from './user.model.js';
 
 function handleEntityNotFound(res) {
   return function (entity) {
@@ -31,14 +31,14 @@ function handleError(res, statusCode) {
 /**
  * Creates all users
  */
-exports.getAll = function (req, res, next) {
+export function getAll(req, res, next) {
   return User.find().then(respondWithResult(res)).catch(handleError(res));
-};
+}
 
 /**
  * Login
  */
-exports.login = function (req, res, next) {
+export function login(req, res, next) {
   const { email, password } = req.body || {};
   return User.findOne({ email, password })
     .then((user) => {
@@ -47,12 +47,12 @@ exports.login = function (req, res, next) {
     })
     .then(respondWithResult(res))
     .catch(handleError(res));
-};
+}
 
 /**
  * Creates a new user
  */
-exports.create = function (req, res, next) {
+export function create(req, res, next) {
   return User.create(req.body)
     .then(function (user) {
       //TODO: Send JWT token
@@ -60,12 +60,12 @@ exports.create = function (req, res, next) {
     })
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
-};
+}
 
 /**
  * Update driver: available true
  */
-exports.available = function (req, res) {
+export function available(req, res) {
   const { latitude, longitude, email } = req.body;
   return User.available(email, { latitude, longitude })
     .then(function (user) {
@@ -73,16 +73,16 @@ exports.available = function (req, res) {
     })
     .then(respondWithResult(res, 200))
     .catch(handleError(res));
-};
+}
 
 /**
  * Update driver: available false
  */
-exports.unavailable = function (req, res) {
+export function unavailable(req, res) {
   return User.unavailable(req.email)
     .then(function (user) {
       return 'Driver is unavailable';
     })
     .then(respondWithResult(res, 200))
     .catch(handleError(res));
-};
+}

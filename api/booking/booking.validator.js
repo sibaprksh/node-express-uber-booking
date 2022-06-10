@@ -1,6 +1,6 @@
-var utils = require('../../utils');
+import { check } from '../../utils.js';
 
-exports.create = function (req, res, next) {
+export function create(req, res, next) {
   req.checkQuery({
     latitude: {
       notEmpty: true,
@@ -14,5 +14,5 @@ exports.create = function (req, res, next) {
     },
   });
 
-  utils.check(req, res, next);
-};
+  check(req, res, next);
+}

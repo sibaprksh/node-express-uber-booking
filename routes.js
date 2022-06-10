@@ -4,8 +4,11 @@
 
 'use strict';
 
-module.exports = function (app) {
+import userRoutes from './api/user/index.js';
+import bookingRoutes from './api/booking/index.js';
+
+export default function (app) {
   // Insert routes below
-  app.use('/api/users', require('./api/user'));
-  app.use('/api/bookings', require('./api/booking'));
-};
+  app.use('/api/users', userRoutes);
+  app.use('/api/bookings', bookingRoutes);
+}

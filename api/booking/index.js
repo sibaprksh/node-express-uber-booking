@@ -1,12 +1,12 @@
 'use strict';
 
-var express = require('express');
-var controller = require('./booking.controller');
-var validator = require('./booking.validator');
+import express from 'express';
+import { create as createController, tripEnd } from './booking.controller.js';
+import { create as createValidator } from './booking.validator.js';
 
 var router = express.Router();
 
-router.post('/', validator.create, controller.create);
-router.post('/tripEnd', controller.tripEnd);
+router.post('/', createValidator, createController);
+router.post('/tripEnd', tripEnd);
 
-module.exports = router;
+export default router;

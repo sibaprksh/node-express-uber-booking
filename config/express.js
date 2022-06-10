@@ -1,9 +1,9 @@
 'use strict';
 
-const bodyParser = require('body-parser');
-const expressValidator = require('express-validator');
+import bodyParser from 'body-parser';
+import expressValidator from 'express-validator';
 
-module.exports = function (app) {
+export default function (app) {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
 
@@ -21,4 +21,4 @@ module.exports = function (app) {
       },
     })
   );
-};
+}

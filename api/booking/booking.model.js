@@ -8,7 +8,7 @@ const Store = [
   },
 ];
 
-exports.Booking = {
+export const Booking = {
   create: async (user) => {
     return Store.push(user);
   },

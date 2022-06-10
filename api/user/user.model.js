@@ -1,5 +1,7 @@
 //TODO: implement mongoose.js ODM for mongodb
 
+import { distance_threshold } from '../../config/environment.js';
+
 const Store = [
   {
     name: 'Siba',
@@ -20,7 +22,7 @@ const Store = [
   },
 ];
 
-exports.User = {
+export const User = {
   create: async (user) => {
     return Store.push(user);
   },
@@ -46,7 +48,7 @@ exports.User = {
           Math.pow(Math.pow(longitude, 2) - Math.pow(lon, 2), 2)
       );
 
-      if (distance <= config.distance_threshold) return true;
+      if (distance <= distance_threshold) return true;
     });
   },
   available: async (email, { latitude, longitude }) => {

@@ -4,18 +4,17 @@
 
 'use strict';
 
-const config = require('./config/environment');
-const express = require('express');
+import { port } from './config/environment.js';
+import expressConfig from './config/express.js';
+import routes from './routes.js';
+import express from 'express';
 
 // Setup server
 const app = express();
-require('./config/express')(app);
-require('./routes')(app);
+expressConfig(app);
+routes(app);
 
 // Start server
-app.listen(config.port, function () {
-  console.log('Express server listening on %d', config.port);
+app.listen(port, function () {
+  console.log('Express server listening on %d', port);
 });
-
-// Expose app
-exports = module.exports = app;

@@ -1,4 +1,4 @@
-exports.check = (req, res, next) => {
+export function check(req, res, next) {
   var errors = req.validationErrors();
   if (errors) {
     res.status(422);
@@ -9,4 +9,4 @@ exports.check = (req, res, next) => {
     return;
   }
   next();
-};
+}

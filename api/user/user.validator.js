@@ -1,29 +1,6 @@
-var utils = require('../../utils');
+import { check } from '../../utils.js';
 
-exports.signup = function (req, res, next) {
-  req.checkBody({
-    name: {
-      notEmpty: true,
-      errorMessage: 'Invalid Name',
-    },
-    email: {
-      notEmpty: true,
-      errorMessage: 'Invalid email',
-    },
-    password: {
-      notEmpty: true,
-      errorMessage: 'Invalid password',
-    },
-    role: {
-      notEmpty: true,
-      errorMessage: 'Invalid role',
-    },
-  });
-
-  utils.check(req, res, next);
-};
-
-exports.login = function (req, res, next) {
+export function login(req, res, next) {
   req.checkBody({
     email: {
       notEmpty: true,
@@ -35,10 +12,10 @@ exports.login = function (req, res, next) {
     },
   });
 
-  utils.check(req, res, next);
-};
+  check(req, res, next);
+}
 
-exports.availability = function (req, res, next) {
+export function availability(req, res, next) {
   req.checkBody({
     email: {
       notEmpty: true,
@@ -56,5 +33,5 @@ exports.availability = function (req, res, next) {
     },
   });
 
-  utils.check(req, res, next);
-};
+  check(req, res, next);
+}
